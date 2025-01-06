@@ -5,20 +5,85 @@ const AdminDashboard = () => {
   const [selectedTab, setSelectedTab] = useState("Staff");
   const [showDialog, setShowDialog] = useState(false);
   const [dialogContent, setDialogContent] = useState("");
-  const [data, setData] = useState({});
+  // const [data, setData] = useState({});
   const [addDialogVisible, setAddDialogVisible] = useState(false);
 
   const tabs = ["Staff", "Goods", "Patients", "Events", "Donation"];
 
-  useEffect(() => {
-    // Simulating data fetching
-    const fetchData = async () => {
-      const response = await axios.get("/api/dashboard-data");
-      setData(response.data);
-    };
+  // useEffect(() => {
+  //   // Simulating data fetching
+  //   const fetchData = async () => {
+  //     const response = await axios.get("/api/dashboard-data");
+  //     setData(response.data);
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
+
+  const data = {
+    Staff: [
+      {
+        id: 1,
+        name: "John Doe",
+        email: "staff@gmail.com",
+        age: 45,
+        assigned_work: "Manager",
+        worked_years: "9years, 7monts",
+      },
+      {
+        id: 2,
+        name: "Jane Smith",
+        email: "staff@gmail.com",
+        age: 56,
+        assigned_work: "Assistant",
+        worked_years: "5years, 2months",
+      },
+    ],
+    Goods: [
+      { id: 1, name: "Beds", quantity: 10, status: "Available" },
+      { id: 2, name: "Wheelchairs", quantity: 5, status: "Out of Stock" },
+    ],
+    Patients: [
+      {
+        id: 1,
+        name: "Alice",
+        family: "Suresh",
+        age: 70,
+        Medical_Status: "view",
+      },
+      {
+        id: 2,
+        name: "Bob",
+        family: "NGO",
+        age: 65,
+        Medical_Status: "view",
+      },
+    ],
+    Events: [
+      { id: 1, name: "Health Camp", date: "2025-01-15", status: "Upcoming" },
+      { id: 2, name: "Fundraiser", date: "2025-02-10", status: "Completed" },
+    ],
+    Donation: [
+      {
+        id: 1,
+        name: "John Doe",
+        phone_no: 916753421,
+        email: "abc@gmail.com",
+        amount: 500,
+        date: "2025-01-01",
+        description: "Make the good use of money donated",
+      },
+      {
+        id: 2,
+        name: "Jane Smith",
+        phone_no: 916753421,
+        email: "abc@gmail.com",
+        amount: 300,
+        date: "2025-01-05",
+        description: "Make the good use of money donated",
+      },
+    ],
+  };
 
   const handleDialogOpen = (content) => {
     setDialogContent(content);
