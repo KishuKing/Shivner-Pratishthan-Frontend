@@ -1,24 +1,6 @@
+import { items, projects } from "../frontendConstants";
+
 const Home = () => {
-  const projects = [
-    {
-      title: "Mission: Developed Villages",
-      description:
-        "Organized activities and events for developing villages at a faster pace.",
-      image: "/village.jpg", // Replace with your actual image path
-    },
-    {
-      title: "Weekly Workshop programs in city",
-      description:
-        "Conducted several workshops for making people aware of government schemes, scholarships, and health.",
-      image: "/workshop.jpg", // Replace with your actual image path
-    },
-    {
-      title: "Education Awareness Program 2023",
-      description:
-        "Organized several education awareness programmes in almost every region of Kashi in 2023.",
-      image: "/education.jpg", // Replace with your actual image path
-    },
-  ];
   return (
     <div>
       <section className="container mx-auto px-4 py-12 md:py-24">
@@ -81,72 +63,19 @@ const Home = () => {
               enhancing their health, happiness, and quality of life.
             </p>
 
+            {/* Dynamically render items */}
             <ul className="mt-8 space-y-6">
-              <li className="flex items-start">
-                <div className="text-primary mr-4">
-                  {/* <span className="material-icons text-sm">
-                      account_balance
-                    </span> */}
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900">
-                    Conducts Workshops
-                  </h3>
-                  <p className="text-gray-600">
-                    We conduct workshops for senior citizens, focusing on
-                    skill-building, social engagement activities, and awareness
-                    of government pension schemes, healthcare benefits, and
-                    wellness programs.
-                  </p>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <div className="text-primary mr-4">
-                  {/* <span className="material-icons text-sm">spa</span> */}
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900">
-                    Spiritual Path to Peace
-                  </h3>
-                  <p className="text-gray-600">
-                    Organize a symbolic Dindi procession around the campus,
-                    followed by a bhajan session to encourage spiritual
-                    engagement and group activities.
-                  </p>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <div className="text-primary mr-4">
-                  {/* <span className="material-icons text-sm">celebration</span> */}
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900">
-                    Festivals Together
-                  </h3>
-                  <p className="text-gray-600">
-                    We celebrate festivals with seniors, creating joy, fostering
-                    connections, and helping them feel cherished and connected
-                    to their heritage.
-                  </p>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <div className="text-primary mr-4">
-                  {/* <span className="material-icons text-sm">
-                      family_restroom
-                    </span> */}
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900">
-                    Family Connect Program
-                  </h3>
-                  <p className="text-gray-600">
-                    We facilitate regular family meet-ups and talk times,
-                    allowing seniors to stay connected with their loved ones and
-                    strengthen their bonds.
-                  </p>
-                </div>
-              </li>
+              {items.map((item, index) => (
+                <li key={index} className="flex items-start">
+                  <div className="text-primary mr-4 text-3xl">{item.icon}</div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600">{item.description}</p>
+                  </div>
+                </li>
+              ))}
             </ul>
           </div>
 
