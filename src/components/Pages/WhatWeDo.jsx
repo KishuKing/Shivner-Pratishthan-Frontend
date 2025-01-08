@@ -1,5 +1,7 @@
 import React from "react";
 import { items, projects } from "../frontendConstants";
+import OurGallery from "../OurGallery";
+import OurEvents from "../OurEvents";
 
 const WhatWeDo = () => {
   return (
@@ -104,6 +106,8 @@ const WhatWeDo = () => {
           </div>
         </div>
       </section>
+      <OurGallery />
+      <OurEvents />
     </div>
   );
 };
