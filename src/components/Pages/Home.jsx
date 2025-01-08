@@ -1,4 +1,6 @@
 import { items, projects } from "../frontendConstants";
+import OurEvents from "../OurEvents";
+import OurGallery from "../OurGallery";
 
 const Home = () => {
   return (
@@ -138,6 +140,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <OurGallery />
+      <OurEvents />
     </div>
   );
 };
