@@ -1,107 +1,139 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { FaArrowLeft, FaCheckCircle, FaInfoCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { Upload } from "lucide-react";
 
-export default function DonationForm() {
+const DonationForm = () => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    amount: "",
+    message: "",
+    goodsName: "",
+    goodsQuantity: "",
+    goodsImage: null,
+  });
+
   const [donationType, setDonationType] = useState("money");
-  const [amount, setAmount] = useState("");
   const [goodDetails, setGoodDetails] = useState({
     name: "",
     quantity: "",
     description: "",
     image: null,
   });
-
   const handleImageUpload = (event) => {
     if (event.target.files && event.target.files[0]) {
-      setGoodDetails((prev) => ({ ...prev, image: event.target.files[0] }));
+      setFormData((prev) => ({ ...prev, goodsImage: event.target.files[0] }));
     }
   };
+  const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle form submission here
-    console.log(donationType === "money" ? { amount } : goodDetails);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
-  return (
-    <div className="min-h-screen">
-      {/* Main Content */}
-      <div className="mx-auto">
-        <div className="bg-green-50 flex flex-col justify-center lg:h-64">
-          <h1 className="text-3xl font-semibold text-center mb-2">
-            Apne Paise Hume Dijiye
-          </h1>
-          <p className="text-center text-gray-500">March 02, 2024 8:30 AM</p>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+    setSubmitted(true);
+  };
+
+  if (submitted) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-[#F8FFF9] to-white py-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+        <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-2xl shadow-lg">
+          <div className="text-center">
+            <FaCheckCircle className="mx-auto h-12 w-12 text-[#26B947]" />
+            <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
+              Donation Submitted!
+            </h2>
+            <p className="mt-2 text-sm text-gray-600">
+              Thank you for your generous donation. Your contribution makes a
+              difference!
+            </p>
+          </div>
+          <div className="mt-5">
+            <Link
+              to="/donate"
+              className="group flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-[#26B947] bg-[#F8FFF9] hover:bg-[#26B947] hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#26B947] transition-colors duration-200">
+              <FaArrowLeft className="mr-2" />
+              Back to Donation Page
+            </Link>
+          </div>
         </div>
+      </div>
+    );
+  }
 
-        <div className="max-w-3xl mx-auto space-y-8 py-16">
-          <h2 className="text-2xl font-semibold text-[#026D1C]">
-            Donation Details
-          </h2>
-
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Full Name */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <label
-                  htmlFor="firstName"
-                  className="block text-sm font-medium text-gray-700">
-                  First Name
-                </label>
-                <input
-                  id="firstName"
-                  type="text"
-                  className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#26B947] focus:border-transparent"
-                  placeholder="First Name"
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <label
-                  htmlFor="lastName"
-                  className="block text-sm font-medium text-gray-700">
-                  Last Name
-                </label>
-                <input
-                  id="lastName"
-                  type="text"
-                  className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#26B947] focus:border-transparent"
-                  placeholder="Last Name"
-                  required
-                />
-              </div>
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-[#F8FFF9] to-white py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto">
+        <Link
+          to="/donate"
+          className="inline-flex items-center text-[#26B947] hover:text-[#1f9939] transition-colors mb-8">
+          <FaArrowLeft className="mr-2" />
+          Back to Donation Page
+        </Link>
+        <div className="bg-white shadow-xl rounded-3xl overflow-hidden">
+          <div className="bg-[#16a34a] text-white py-8 px-6 sm:px-10">
+            <h2 className="text-3xl font-bold mb-2">Make a Donation</h2>
+            <p className="text-lg">
+              Support our cause and make a difference in the community.
+            </p>
+          </div>
+          <form
+            onSubmit={handleSubmit}
+            className="py-8 px-6 sm:px-10 space-y-8">
+            <div>
+              <label
+                htmlFor="fullName"
+                className="block text-sm font-medium text-gray-700">
+                Full Name
+              </label>
+              <input
+                type="text"
+                name="fullName"
+                id="fullName"
+                required
+                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-[#26B947] focus:border-[#26B947]"
+                value={formData.fullName}
+                onChange={handleChange}
+              />
             </div>
-
-            {/* Email */}
-            <div className="space-y-2">
+            <div>
               <label
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700">
-                Email Id
+                Email
               </label>
               <input
-                id="email"
                 type="email"
-                className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#26B947] focus:border-transparent"
-                placeholder="example123@gmail.com"
+                name="email"
+                id="email"
                 required
+                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-[#26B947] focus:border-[#26B947]"
+                value={formData.email}
+                onChange={handleChange}
               />
             </div>
-
-            {/* Phone */}
-            <div className="space-y-2">
+            <div>
               <label
                 htmlFor="phone"
                 className="block text-sm font-medium text-gray-700">
-                Phone No.
+                Phone
               </label>
               <input
-                id="phone"
                 type="tel"
-                className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#26B947] focus:border-transparent"
-                placeholder="00000 00000"
-                required
+                name="phone"
+                id="phone"
+                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-[#26B947] focus:border-[#26B947]"
+                value={formData.phone}
+                onChange={handleChange}
               />
             </div>
 
@@ -139,11 +171,12 @@ export default function DonationForm() {
                 </label>
                 <input
                   id="amount"
+                  name="amount"
                   type="number"
                   className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#26B947] focus:border-transparent"
                   placeholder="Enter amount"
-                  value={amount}
-                  onChange={(event) => setAmount(event.target.value)}
+                  value={formData.amount}
+                  onChange={handleChange}
                   required
                 />
               </div>
@@ -160,11 +193,11 @@ export default function DonationForm() {
                     type="text"
                     className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#26B947] focus:border-transparent"
                     placeholder="Enter good name"
-                    value={goodDetails.name}
+                    value={formData.goodsName}
                     onChange={(event) =>
-                      setGoodDetails((prev) => ({
+                      setFormData((prev) => ({
                         ...prev,
-                        name: event.target.value,
+                        goodsName: event.target.value,
                       }))
                     }
                     required
@@ -181,11 +214,11 @@ export default function DonationForm() {
                     type="number"
                     className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#26B947] focus:border-transparent"
                     placeholder="Enter quantity"
-                    value={goodDetails.quantity}
+                    value={formData.goodsQuantity}
                     onChange={(event) =>
-                      setGoodDetails((prev) => ({
+                      setFormData((prev) => ({
                         ...prev,
-                        quantity: event.target.value,
+                        goodsQuantity: event.target.value,
                       }))
                     }
                     required
@@ -220,40 +253,47 @@ export default function DonationForm() {
                       </p>
                     </div>
                   </div>
-                  {goodDetails.image && (
+                  {formData.goodsImage && (
                     <p className="text-sm text-gray-500 mt-2">
-                      Selected file: {goodDetails.image.name}
+                      Selected file: {formData.goodsImage.name}
                     </p>
                   )}
                 </div>
               </div>
             )}
-
-            {/* Message */}
-            <div className="space-y-2">
+            <div>
               <label
                 htmlFor="message"
                 className="block text-sm font-medium text-gray-700">
-                Message
+                Message (Optional)
               </label>
               <textarea
+                name="message"
                 id="message"
-                className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#26B947] focus:border-transparent min-h-[100px]"
-                placeholder="Write your message here..."
-              />
+                rows="3"
+                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-[#26B947] focus:border-[#26B947]"
+                value={formData.message}
+                onChange={handleChange}></textarea>
             </div>
-
-            {/* Submit Button */}
-            <div className="flex justify-center">
+            <div>
               <button
                 type="submit"
-                className="bg-[#26B947] text-white px-8 py-2 rounded-md hover:bg-[#1f9939] transition-colors">
-                Donate
+                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#26B947] hover:bg-[#1f9939] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#26B947]">
+                Submit Donation
               </button>
+            </div>
+            <div className="text-sm text-gray-600 flex items-start bg-blue-50 p-4 rounded-md">
+              <FaInfoCircle className="mr-2 mt-1 flex-shrink-0 text-blue-500" />
+              <p>
+                Your donation will directly contribute to our initiatives. Thank
+                you for your support!
+              </p>
             </div>
           </form>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default DonationForm;
