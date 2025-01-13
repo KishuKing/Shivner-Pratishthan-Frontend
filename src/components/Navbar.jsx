@@ -71,7 +71,7 @@ const Navbar = () => {
           <Link to="/" onClick={toggleMenu} className="hover:text-green-600">
             Home
           </Link>
-          <Link to="/" onClick={toggleMenu} className="hover:text-green-600">
+          <Link to="/aboutus" onClick={toggleMenu} className="hover:text-green-600">
             About us
           </Link>
           <Link
@@ -80,7 +80,7 @@ const Navbar = () => {
             className="hover:text-green-600">
             Events
           </Link>
-          <Link to="/" onClick={toggleMenu} className="hover:text-green-600">
+          <Link to="/stories" onClick={toggleMenu} className="hover:text-green-600">
             Stories
           </Link>
           <Link
