@@ -37,13 +37,13 @@ const Navbar = () => {
           <Link to="/" className="hover:text-green-600 cursor-pointer">
             Home
           </Link>
-          <Link to="/" className="hover:text-green-600 cursor-pointer">
+          <Link to="/aboutus" className="hover:text-green-600 cursor-pointer">
             About us
           </Link>
           <Link to="/events" className="hover:text-green-600 cursor-pointer">
             Events
           </Link>
-          <Link to="/" className="hover:text-green-600 cursor-pointer">
+          <Link to="/stories" className="hover:text-green-600 cursor-pointer">
             Stories
           </Link>
           <Link to="/contact" className="hover:text-green-600 cursor-pointer">
