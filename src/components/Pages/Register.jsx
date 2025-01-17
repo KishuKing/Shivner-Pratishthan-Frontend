@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import RegisterImage from "../../assets/registerImage.jpg";
+import GoogleLogo from "../../assets/icons8-google-25.png";
 import { Link } from "react-router-dom";
 
 function Register() {
   const [formData, setFormData] = useState({
-    username: "",
+    familyMemberFullName: "",
     phone: "",
     email: "",
     password: "",
-    adminCode: "",
+    residentFullName: "",
+    residentAge: "",
   });
 
   const handleInputChange = (e) => {
@@ -21,130 +22,110 @@ function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log("username:", formData.username);
-    console.log("phone:", formData.phone);
-    console.log("email:", formData.email);
-    console.log("password:", formData.password);
-    console.log("adminCode:", formData.adminCode);
   };
 
   return (
-    <div className="min-h-screen gap-12 flex items-center justify-center bg-white">
-      <div
-        className="bg-white rounded-3xl shadow-xl p-8"
-        style={{ width: "450px" }}>
-        <h2 className="text-3xl font-bold mb-6 text-green-500 text-center">
-          Sign up
-        </h2>
-
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label
-              htmlFor="username"
-              className="block text-gray-700 text-sm font-bold mb-2">
-              Full Name
-            </label>
-            <input
-              type="text"
-              id="username"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              value={formData.username}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              htmlFor="phone"
-              className="block text-gray-700 text-sm font-bold mb-2">
-              Phone No.
-            </label>
+    <div className="flex flex-col md:flex-row h-screen">
+      {/* Left Section */}
+      <div className="w-full md:w-1/2 lg:w-3/5 bg-white p-8 flex flex-col justify-center items-center">
+        <h1 className="text-3xl font-bold mb-4">
+          Sign up and Create a New Account
+        </h1>
+        <p className="mb-6 text-gray-600">Sign up using social networks</p>
+        <div className="flex space-x-4 mb-6">
+          <button
+            className="flex items-center w-64 gap-4 px-5 bg-transparent rounded-full border-2  py-3 text-lg"
+            variant="outline">
+            {" "}
+            <img src={GoogleLogo} />
+            Sign Up With Google
+          </button>
+        </div>
+        <p className="text-gray-500 mb-4">OR</p>
+        <form className="w-full max-w-sm space-y-4" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Family Member Full Name"
+            value={formData.familyMemberFullName}
+            onChange={handleInputChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded"
+          />
+          <div className="relative">
             <input
               type="number"
-              id="phone"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              placeholder="Phone no."
               value={formData.phone}
               onChange={handleInputChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded"
             />
           </div>
-          <div className="mb-4">
-            <label
-              htmlFor="email"
-              className="block text-gray-700 text-sm font-bold mb-2">
-              Email
-            </label>
+          <div className="relative">
             <input
               type="email"
-              id="email"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              placeholder="Email"
               value={formData.email}
               onChange={handleInputChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded"
             />
           </div>
-
-          <div className="mb-4">
-            <label
-              htmlFor="password"
-              className="block text-gray-700 text-sm font-bold mb-2">
-              Password
-            </label>
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Resident Full Name"
+              value={formData.residentFullName}
+              onChange={handleInputChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded"
+            />
+          </div>
+          <div className="relative">
+            <input
+              type="number"
+              placeholder="Resident Age"
+              value={formData.residentAge}
+              onChange={handleInputChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded"
+            />
+          </div>
+          <div className="relative">
             <input
               type="password"
-              id="password"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              placeholder="Password"
               value={formData.password}
               onChange={handleInputChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded"
             />
           </div>
-
-          <div className="mb-4">
-            <label
-              htmlFor="admin-code"
-              className="block text-gray-700 text-sm font-bold mb-2">
-              Admin Code
-            </label>
-            <input
-              type="password"
-              id="admin-code"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              value={formData.adminCode}
-              onChange={handleInputChange}
-            />
-          </div>
-
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center justify-center">
-              <input type="checkbox" id="remember" className="mr-2" />
-              <label htmlFor="remember" className="text-gray-600 text-sm">
-                I accept the <a className="text-green-500">Terms of Use</a> &{" "}
-                <a className="text-green-500">Privacy Policy</a>
-              </label>
-            </div>
-          </div>
-
-          <div className="mb-6">
-            <button
-              type="submit"
-              className="bg-green-500 hover:bg-green-700 text-white w-full font-bold py-2 px-4 rounded-2xl focus:outline-none focus:shadow-outline">
-              Sign up
-            </button>
-          </div>
-
-          <div className="text-center text-gray-600">
-            Already have an account?{" "}
-            <Link to="/login" className="text-green-500 hover:text-green-700">
-              Login
-            </Link>
-          </div>
+          <button
+            type="submit"
+            className="w-full mt-6 bg-green-500 text-white py-2 rounded">
+            Sign Up
+          </button>
+          <label className="block md:hidden lg:hidden text-gray-500 mt-4 text-sm">
+            Already have an account?
+          </label>
+          <Link
+            to="/login"
+            type="submit"
+            className="w-full mt-2 bg-green-500 text-white py-2 rounded block md:hidden lg:hidden">
+            Sign in
+          </Link>
         </form>
       </div>
-      <div className="justify-start hidden lg:block">
-        {" "}
-        <img
-          src={RegisterImage}
-          alt="Description of the image"
-          style={{ width: "700px", height: "auto" }}
-        />{" "}
+
+      {/* Right Section */}
+      <div className="hidden md:flex w-full md:w-1/2 lg:w-2/5 bg-gradient-to-r from-teal-400 to-green-500 flex-col justify-center items-center">
+        <h1 className="text-white text-3xl font-bold mb-4">
+          {" "}
+          Already have an account?
+        </h1>
+        <p className="text-white mb-6 text-center">
+          Login in and have a great day
+        </p>
+        <Link
+          to="/login"
+          className="bg-white text-teal-500 px-6 py-2 rounded-full">
+          Sign In
+        </Link>
       </div>
     </div>
   );
