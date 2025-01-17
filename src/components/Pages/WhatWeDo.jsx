@@ -30,7 +30,7 @@ const WhatWeDo = () => {
       title: "Health & Wellness Camp",
       date: "February 15, 2024",
       location: "Main Center",
-      image: "/placeholder.svg?height=400&width=600",
+      image: "./skillDevelopment.jpg",
       description:
         "Free health check-ups and wellness sessions for our residents.",
     },
@@ -38,7 +38,7 @@ const WhatWeDo = () => {
       title: "Cultural Evening",
       date: "February 20, 2024",
       location: "Community Hall",
-      image: "/placeholder.svg?height=400&width=600",
+      image: "./culturalEvening.jpg",
       description: "An evening of music, dance, and cultural performances.",
     },
     {
@@ -55,21 +55,21 @@ const WhatWeDo = () => {
       title: "Healthcare Initiative",
       description:
         "Providing accessible healthcare services to elderly residents.",
-      image: "/placeholder.svg?height=400&width=600",
+      image: "./healthCare.jpg",
       category: "Healthcare",
     },
     {
       title: "Social Integration Program",
       description:
         "Bringing together seniors through various social activities.",
-      image: "/placeholder.svg?height=400&width=600",
+      image: "./socialIntegrationProgram.jpg",
       category: "Community",
     },
     {
       title: "Skill Development",
       description:
         "Teaching new skills to keep our residents engaged and productive.",
-      image: "/placeholder.svg?height=400&width=600",
+      image: "./skillDevelopment1.jpg",
       category: "Education",
     },
   ];
@@ -107,7 +107,7 @@ const WhatWeDo = () => {
               className="relative">
               <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src="/placeholder.svg?height=600&width=800"
+                  src="./eventPageImage.jpg"
                   alt="Seniors participating in activities"
                   className="w-full h-full object-cover"
                 />
@@ -213,7 +213,7 @@ const WhatWeDo = () => {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full aspect-[4/3] object-cover transform group-hover:scale-110 transition-transform duration-300"
+                    className="w-full aspect-[4/3] object-fill transform group-hover:scale-110 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <Search className="text-white h-8 w-8" />
