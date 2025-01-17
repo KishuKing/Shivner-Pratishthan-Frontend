@@ -1,5 +1,15 @@
 import React, { useState } from "react";
 import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
+import {
+  ArrowRight,
+  Heart,
+  Users,
+  Calendar,
+  Award,
+  ArrowUpRight,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -23,68 +33,80 @@ const ContactUs = () => {
     console.log("Form Data:", formData);
   };
   return (
-    <div>
-      <section className="bg-green-50 h-96 py-12">
-        <div className="container mx-auto px-4 gap-14 md:flex md:items-start md:justify-between">
-          {/* Left Section */}
-          <div className="mb-8 md:mb-0 md:w-1/2">
-            <p className="text-sm font-medium text-gray-600 uppercase">
-              Contact Us
-            </p>
-            <h2 className="text-4xl font-bold text-gray-900 mt-4">
-              We'd love to hear from you
-            </h2>
-            <p className="text-gray-600 mt-4">
-              Have any question in mind or want to enquire? Please feel free to
-              contact us through the form or the following details.
-            </p>
-          </div>
-
-          {/* Right Section */}
-          <div className="md:w-1/2">
-            {/* Contact Details */}
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold text-gray-900">
-                Let's talk!
-              </h3>
-              <p className="text-gray-600 mt-2">
-                +91 91362 45102 <br />
-                <a
-                  href="mailto:manaspublic321@gmail.com"
-                  className="text-blue-600 hover:underline">
-                  manaspublic321@gmail.com
-                </a>
+    <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#efffef] via-[#f7fff7] to-white">
+      <section className="relative bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#efffef] via-[#f7fff7] to-white">
+        <div className="max-w-[1200px] mx-auto px-6 py-24">
+          <div className="grid gap-8 md:grid-cols-2 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="space-y-6">
+              <div className="flex items-center gap-3">
+                <div className="w-6 h-[1px] bg-black"></div>
+                <span className="text-sm tracking-wider font-medium">
+                  CONTACT US
+                </span>
+              </div>
+              <h1 className="text-[48px] font-bold leading-tight bg-gradient-to-r from-[#26B947] to-[#546FFF] bg-clip-text text-transparent">
+                We'd love to hear from you
+              </h1>
+              <p className="text-lg text-gray-600">
+                Have any question in mind or want to enquire? Please feel free
+                to contact us through the form or the following details
               </p>
-            </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="space-y-6">
+              <div className="aspect-[4/3] pt-20 pl-20 space-y-10">
+                {/* Contact Details */}
+                <div className="mb-6">
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    Let's talk!
+                  </h3>
+                  <p className="text-gray-600 mt-2">
+                    +91 91362 45102 <br />
+                    <a
+                      href="mailto:manaspublic321@gmail.com"
+                      className="text-blue-600 hover:underline">
+                      manaspublic321@gmail.com
+                    </a>
+                  </p>
+                </div>
 
-            {/* Address */}
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold text-gray-900">
-                Headoffice
-              </h3>
-              <p className="text-gray-600 mt-2">
-                301, Sai Siddhi Apartment, Sector 9, Airoli
-              </p>
-            </div>
+                {/* Address */}
+                <div className="mb-6">
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    Headoffice
+                  </h3>
+                  <p className="text-gray-600 mt-2">
+                    301, Sai Siddhi Apartment, Sector 9, Airoli
+                  </p>
+                </div>
 
-            {/* Social Icons */}
-            <div className="flex space-x-4 mt-4">
-              <a
-                href="#"
-                className="text-gray-600 hover:text-gray-900 transition-colors">
-                <FaFacebook size={24} />
-              </a>
-              <a
-                href="#"
-                className="text-gray-600 hover:text-gray-900 transition-colors">
-                <FaTwitter size={24} />
-              </a>
-              <a
-                href="#"
-                className="text-gray-600 hover:text-gray-900 transition-colors">
-                <FaLinkedin size={24} />
-              </a>
-            </div>
+                {/* Social Icons */}
+                <div className="flex space-x-4 mt-4">
+                  <a
+                    href="#"
+                    className="text-gray-600 hover:text-gray-900 transition-colors">
+                    <FaFacebook size={24} />
+                  </a>
+                  <a
+                    href="#"
+                    className="text-gray-600 hover:text-gray-900 transition-colors">
+                    <FaTwitter size={24} />
+                  </a>
+                  <a
+                    href="#"
+                    className="text-gray-600 hover:text-gray-900 transition-colors">
+                    <FaLinkedin size={24} />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
