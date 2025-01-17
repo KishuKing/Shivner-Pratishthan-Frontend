@@ -1,136 +1,91 @@
 import React, { useState } from "react";
-import axios from "axios";
-import LoginImage from "../../assets/loginImage.jpg";
+import { Link } from "react-router-dom";
 import GoogleLogo from "../../assets/icons8-google-25.png";
-import { Link, useNavigate } from "react-router-dom";
 
-function Login() {
-  const [username, setUsername] = useState("");
+const Login = () => {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [status, setStatus] = useState("");
-  const navigate = useNavigate();
 
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
+  // Handler for form submission
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent form reload
+
     try {
-      const res = await axios.post(
-        "http://localhost:3000/api/login",
-        {
-          username,
-          password,
-        },
-        { withCredentials: true }
-      );
-      if (res.data.success) {
-        setStatus("Login successful!");
-        navigate("/");
-      }
+      const response = await axios.post("https://example.com/api/login", {
+        email,
+        password,
+      });
+      console.log("Login successful:", response.data);
+      alert("Login successful!");
     } catch (error) {
-      setStatus("Login failed");
+      console.error("Error logging in:", error);
+      alert("Failed to log in. Please try again.");
     }
   };
-
   return (
-    <div className="min-h-screen gap-12 flex items-center justify-center bg-white">
-      <div className="justify-start hidden lg:block">
-        {" "}
-        <img
-          src={LoginImage}
-          alt="Description of the image"
-          style={{ width: "700px", height: "auto" }}
-        />{" "}
-      </div>
-      <div
-        className="bg-white rounded-3xl shadow-xl p-8 w-96"
-        style={{ width: "450px" }}>
-        <h2 className="text-3xl font-bold mb-6 text-green-500 text-center">
-          Log in
-        </h2>
-
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label
-              htmlFor="username"
-              className="block text-gray-700 text-sm font-bold mb-2">
-              Username or Email
-            </label>
-            <input
-              type="text"
-              id="username"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              value={username}
-              onChange={handleUsernameChange}
-            />
-          </div>
-
-          <div className="mb-4">
-            <label
-              htmlFor="password"
-              className="block text-gray-700 text-sm font-bold mb-2">
-              Password
-            </label>
+    <div className="flex flex-col md:flex-row h-screen">
+      {/* Left Section */}
+      <div className="w-full md:w-1/2 lg:w-3/5 bg-white p-8 flex flex-col justify-center items-center">
+        <h1 className="text-3xl font-bold mb-4">Login to Your Account</h1>
+        <p className="mb-6 text-gray-600">Login using social networks</p>
+        <div className="flex space-x-4 mb-6">
+          <button
+            className="flex items-center w-64 gap-4 px-5 bg-transparent rounded-full border-2  py-3 text-lg"
+            variant="outline">
+            {" "}
+            <img src={GoogleLogo} />
+            Sign In With Google
+          </button>
+        </div>
+        <p className="text-gray-500 mb-4">OR</p>
+        <form className="w-full max-w-sm" onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full mb-4 px-4 py-2 border border-gray-300 rounded"
+          />
+          <div className="relative">
             <input
               type="password"
-              id="password"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              placeholder="Password"
               value={password}
-              onChange={handlePasswordChange}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded"
             />
           </div>
-
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center justify-center">
-              <input type="checkbox" id="remember" className="mr-2" />
-              <label htmlFor="remember" className="text-gray-600 text-sm">
-                Remember me
-              </label>
-            </div>
-            <a href="#" className="text-green-500 hover:text-green-700 text-sm">
-              Forgot password?
-            </a>
-          </div>
-
-          <div className="mb-6">
-            <button
-              type="submit"
-              className="bg-green-500 hover:bg-green-700 text-white w-full font-bold py-2 px-4 rounded-2xl focus:outline-none focus:shadow-outline">
-              Login
-            </button>
-          </div>
-
-          <div className="text-center text-gray-600">
-            Don't have an account?{" "}
-            <Link
-              to="/register"
-              className="text-green-500 hover:text-green-700">
-              Sign up
-            </Link>
-          </div>
-
-          <div className="text-center mt-4">
-            <span className="text-gray-600">or connect with</span>
-            <div className="flex justify-center mt-2">
-              <button
-                className="flex items-center w-64 gap-4 px-5 mb-4 bg-transparent rounded-full border-2  py-3 text-lg"
-                variant="outline">
-                {" "}
-                <img src={GoogleLogo} />
-                Sign In With Google
-              </button>
-            </div>
-          </div>
+          <button
+            type="submit"
+            className="w-full mt-6 bg-green-500 text-white py-2 rounded">
+            Sign In
+          </button>
+          <label className="block md:hidden lg:hidden text-gray-500 mt-4 text-sm">
+            Dont have an account?
+          </label>
+          <Link
+            to="/register"
+            type="submit"
+            className="w-full mt-2 bg-green-500 text-white py-2 rounded block md:hidden lg:hidden">
+            Sign Up
+          </Link>
         </form>
+      </div>
+
+      {/* Right Section */}
+      <div className="hidden md:flex w-full md:w-1/2 lg:w-2/5 bg-gradient-to-r from-teal-400 to-green-500 flex-col justify-center items-center">
+        <h1 className="text-white text-3xl font-bold mb-4">New Here?</h1>
+        <p className="text-white mb-6 text-center">
+          Sign up and discover a great amount of new opportunities!
+        </p>
+        <Link
+          to="/register"
+          className="bg-white text-teal-500 px-6 py-2 rounded-full">
+          Sign Up
+        </Link>
       </div>
     </div>
   );
-}
+};
 
 export default Login;
