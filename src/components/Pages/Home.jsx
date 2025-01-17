@@ -43,19 +43,19 @@ const Home = () => {
     {
       title: "Health & Wellness Camp",
       date: "Feb 15, 2024",
-      image: "/placeholder.svg?height=400&width=600",
+      image: "./healthCare.jpg",
       category: "Healthcare",
     },
     {
       title: "Cultural Celebration",
       date: "Feb 20, 2024",
-      image: "/placeholder.svg?height=400&width=600",
+      image: "./socialIntegrationProgram.jpg",
       category: "Culture",
     },
     {
       title: "Yoga Workshop",
       date: "Feb 25, 2024",
-      image: "/placeholder.svg?height=400&width=600",
+      image: "./skillDevelopment1.jpg",
       category: "Wellness",
     },
   ];
@@ -87,13 +87,13 @@ const Home = () => {
               </p>
               <div className="flex gap-4">
                 <Link
-                  href="/about"
+                  to="/aboutus"
                   className="inline-flex items-center gap-2 bg-[#26B947] text-white px-8 py-3 rounded-full hover:bg-opacity-90 transition-all hover:gap-4">
                   Learn More
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
-                  href="/donate"
+                  to="/donation"
                   className="inline-flex items-center gap-2 border-2 border-[#26B947] text-[#26B947] px-8 py-3 rounded-full hover:bg-[#26B947] hover:text-white transition-all hover:gap-4">
                   Donate Now
                   <Heart className="h-4 w-4" />
@@ -107,7 +107,7 @@ const Home = () => {
               className="relative">
               <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform">
                 <img
-                  src="/placeholder.svg?height=600&width=800"
+                  src="./homePageImage.jpg"
                   alt="Elderly care at Shivner Pratishthan"
                   className="w-full h-full object-cover"
                 />
