@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-
 import {
   FaArrowRight,
   FaArrowLeft,
@@ -78,7 +77,7 @@ const DonatePage = () => {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-[#F8FFF9] to-white">
+    <main className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#efffef] via-[#f7fff7] to-white">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="max-w-[1200px] mx-auto px-6 py-24">
@@ -113,10 +112,6 @@ const DonatePage = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              {/* <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg">
-                <p className="text-2xl font-bold text-[#26B947]">500+</p>
-                <p className="text-sm text-gray-600">Active Volunteers</p>
-              </div> */}
             </div>
           </div>
         </div>
@@ -253,88 +248,10 @@ const DonatePage = () => {
             </ul>
           )}
         </div>
-
-        {/* Events Carousel
-        <div className="mt-24">
-          <h2 className="text-[32px] font-bold mb-12">Upcoming Events</h2>
-          <div className="relative">
-            <div className="overflow-hidden">
-              <AnimatePresence mode='wait'>
-                <motion.div
-                  key={currentEventIndex}
-                  initial={{ opacity: 0, x: 100 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -100 }}
-                  transition={{ duration: 0.5 }}
-                  className="grid md:grid-cols-2 gap-8 items-center"
-                >
-                  <div className="space-y-6">
-                    <span className="inline-block px-4 py-1 bg-[#26B947] bg-opacity-10 text-[#26B947] rounded-full text-sm font-medium">
-                      {events[currentEventIndex].category}
-                    </span>
-                    <h3 className="text-2xl font-bold">{events[currentEventIndex].title}</h3>
-                    <div className="space-y-2 text-gray-600">
-                      <div className="flex items-center gap-2">
-                        <FaRegCalendarAlt className="text-[#26B947]" />
-                        <span>{events[currentEventIndex].date}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <FaMapMarkerAlt className="text-[#26B947]" />
-                        <span>{events[currentEventIndex].location}</span>
-                      </div>
-                    </div>
-                    <p className="text-gray-600">{events[currentEventIndex].description}</p>
-                    <Link 
-                      to="/volunteer-form" 
-                      className="inline-flex items-center gap-2 bg-[#26B947] text-white px-6 py-2 rounded-lg hover:bg-opacity-90 transition-all hover:gap-3"
-                    >
-                      Apply to Volunteer
-                      <FaArrowRight />
-                    </Link>
-                  </div>
-                  <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
-                    <img 
-                      src={events[currentEventIndex].image} 
-                      alt={events[currentEventIndex].title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-            
-            // {/* Navigation */}
-        {/* <div className="flex justify-center mt-8 gap-4">
-              <button 
-                onClick={prevEvent}
-                className="p-2 rounded-full bg-white border border-gray-200 hover:border-[#26B947] transition-colors"
-              >
-                <FaArrowLeft className="text-gray-600" />
-              </button>
-              {events.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentEventIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    currentEventIndex === index 
-                      ? "bg-[#26B947] w-8" 
-                      : "bg-gray-300 hover:bg-gray-400"
-                  }`}
-                />
-              ))}
-              <button 
-                onClick={nextEvent}
-                className="p-2 rounded-full bg-white border border-gray-200 hover:border-[#26B947] transition-colors"
-              >
-                <FaArrowRight className="text-gray-600" />
-              </button>
-            </div>
-          </div>
-        </div>*/}
       </section>
 
       {/* Impact Section */}
-      <section className="bg-[#F8FFF9] py-16">
+      <section className="bg-[linear-gradient(to_right,_var(--tw-gradient-stops))] from-[#f0fff0] via-[#f8fff8] to-[#f0fff0] py-16">
         <div className="max-w-[1200px] mx-auto px-6">
           <h2 className="text-[32px] font-bold mb-12">
             How we use your donation
