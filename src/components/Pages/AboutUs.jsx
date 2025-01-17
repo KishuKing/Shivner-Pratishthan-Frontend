@@ -29,29 +29,34 @@ const AboutUs = () => {
 
   const team = [
     {
-      name: "Aditya Sawant",
-      role: "UI/UX Designer",
-      image: "/placeholder.svg?height=400&width=300",
+      name: "Shri Vivek Suresh Tamboli",
+      role: "Chairman",
+      image: "./chairman.jpg",
     },
     {
-      name: "Manas Tamboli",
-      role: "Backend Developer",
-      image: "/placeholder.svg?height=400&width=300",
+      name: "Shri Bhanudas kokane",
+      role: "Commitee member",
+      image: "./commiteeMember.jpg",
     },
     {
-      name: "Krish Naik",
-      role: "Front-End Developer",
-      image: "/placeholder.svg?height=400&width=300",
+      name: "Shri Uttam vinayak choudhary",
+      role: "Treasurer",
+      image: "./treasurer.jpg",
     },
     {
-      name: "Shreeya Dave",
-      role: "Database Manager",
-      image: "/placeholder.svg?height=400&width=300",
+      name: "Shri Mangesh gadhve",
+      role: "Secretary",
+      image: "./secretary.jpg",
     },
     {
-      name: "Sangeeta Shirsat",
-      role: "Project Manager",
-      image: "/placeholder.svg?height=400&width=300",
+      name: "Shrimati Rekha Tamboli",
+      role: "Commitee member",
+      image: "./commiteeMember2.jpg",
+    },
+    {
+      name: "Shrimati Ad.Jyoti Rajendra Pande",
+      role: "Commitee member",
+      image: "./commiteeMember3.jpg",
     },
   ];
 
@@ -86,7 +91,7 @@ const AboutUs = () => {
             <div className="relative">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform">
                 <img
-                  src="/placeholder.svg?height=600&width=800"
+                  src="./aboutUsPageImage.jpg"
                   alt="Elderly care"
                   className="w-full h-full object-cover"
                 />
@@ -178,20 +183,22 @@ const AboutUs = () => {
               Dedicated professionals working towards a better future
             </p>
           </div>
-          <div className="grid gap-8 md:grid-cols-3 lg:grid-cols-5">
-            {team.map((member, index) => (
+          {/* Grid for 3x2 layout */}
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {team.slice(0, 6).map((member, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="text-center group">
-                <div className="mb-4 aspect-square overflow-hidden rounded-lg">
+                className="text-center group border bg-white rounded-2xl">
+                {/* Card */}
+                <div className="mb-4 aspect-square overflow-hidden rounded-lg flex justify-center items-center">
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    className="h-72 w-72 object-fill transition-transform duration-300"
                   />
                 </div>
                 <h3 className="mb-1 font-semibold">{member.name}</h3>
