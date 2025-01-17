@@ -77,7 +77,7 @@ const VolunteerPage = () => {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-[#F8FFF9] to-white">
+    <main className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#efffef] via-[#f7fff7] to-white">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="max-w-[1200px] mx-auto px-6 py-24">
@@ -300,7 +300,7 @@ const VolunteerPage = () => {
       </section>
 
       {/* Impact Section */}
-      <section className="bg-[#F8FFF9] py-16">
+      <section className="bg-[linear-gradient(to_right,_var(--tw-gradient-stops))] from-[#f0fff0] via-[#f8fff8] to-[#f0fff0] py-16">
         <div className="max-w-[1200px] mx-auto px-6">
           <h2 className="text-[32px] font-bold mb-12">
             How we use volunteer support
